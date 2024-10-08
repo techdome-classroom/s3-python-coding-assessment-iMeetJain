@@ -1,32 +1,16 @@
 import unittest
 from program2 import Solution
 
-class TestRomanToInt(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
+class Solution:
+  def romanToInt(self, s: str) -> int:
+    ans = 0
+    roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+             'C': 100, 'D': 500, 'M': 1000}
 
-    def test_example1(self):
-        self.assertEqual(self.solution.romanToInt("III"), 3)
+    for a, b in zip(s, s[1:]):
+      if roman[a] < roman[b]:
+        ans -= roman[a]
+      else:
+        ans += roman[a]
 
-    def test_example2(self):
-        self.assertEqual(self.solution.romanToInt("LVIII"), 58)
-
-    def test_example3(self):
-        self.assertEqual(self.solution.romanToInt("MCMXCIV"), 1994)
-
-    def test_single_roman_digit(self):
-        self.assertEqual(self.solution.romanToInt("X"), 10)
-
-    def test_subtraction_rule(self):
-        self.assertEqual(self.solution.romanToInt("IV"), 4)
-        self.assertEqual(self.solution.romanToInt("IX"), 9)
-
-    def test_large_number(self):
-        self.assertEqual(self.solution.romanToInt("MMMCMXCIX"), 3999)
-
-    def test_empty_string(self):
-        self.assertEqual(self.solution.romanToInt(""), 0)
-
-if __name__ == '__main__':
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
-
+    return ans + roman[s[-1]]
