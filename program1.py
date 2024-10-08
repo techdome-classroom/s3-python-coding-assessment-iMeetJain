@@ -1,6 +1,4 @@
-class Solution(object):
-    def isValid(self, s):
-        class Solution:
+class Solution:
   def isValid(self, s: str) -> bool:
     stack = []
 
@@ -15,18 +13,3 @@ class Solution(object):
         return False
 
     return not stack
-        """
-        pass
-
-
-
-
-
-
-
-    
-
-
-
-  
-
